@@ -1,4 +1,5 @@
 import urllib.parse
+import argparse
 
 def banner():
     print('''
@@ -12,7 +13,6 @@ def banner():
     ''')
 
 banner()
-
 
 gg_url = 'https://www.google.com/search?num=100&q='
 
@@ -46,10 +46,22 @@ gdorks = ['site:__SITE__ filetype:php',
     	'site:trello.com __SITE__',
     	'site:asana.com __SITE__'
 ]
-
-URL = input("Please enter URL to dork: ")
-
-for x in gdorks:
-    query = x.replace('__SITE__', URL)
-    print(gg_url+urllib.parse.quote(query))
     
+parser = argparse.ArgumentParser()
+parser.add_argument( "-u","--url",help="Set url to dork on!" )
+parser.add_argument( "-o","--output",help="Output the result to a file" )
+parser.parse_args()
+args = parser.parse_args()
+
+if args.url:
+    for x in gdorks:
+        query = x.replace('__SITE__', str(args.url))
+        modified_query = gg_url+urllib.parse.quote(query)
+        print(modified_query)
+            
+        if args.output:
+            with open(args.output, 'a') as output_file:
+                output_file.write("%s\n" % modified_query)
+                    
+else:
+    print("usage: python -u <example.com> -o output_file.txt")

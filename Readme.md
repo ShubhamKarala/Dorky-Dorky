@@ -8,7 +8,6 @@
         _|"""""_|"""""_|"""""_|"""""_| """"|{======_|"""""_|"""""_|"""""_|"""""_| """"| 
         "`-0-0-"`-0-0-"`-0-0-"`-0-0-"`-0-0-./o--000"`-0-0-"`-0-0-"`-0-0-"`-0-0-"`-0-0-' 
                                         by: @h3lium
-                                        ```
+```
 ## Usage:
-* step 1: ```python main.py```
-* step 2: enter the host you want to dork on <example> google.com
+```python main.py -u <example.com> -o output_file.txt```
